@@ -1,3 +1,5 @@
+import data from "./data.js";
+
 const MAX_ATTEMPTS = 6;
 const KEYBOARD_BOX = document.querySelector(".keyboard");
 const OUTPUT_GUESSES = document.querySelector(".output .guesses");
@@ -12,10 +14,8 @@ let correctGuesses = 0;
 async function getData() {
   const HINT_OUTPUT = document.querySelector(".output .hint");
   try {
-    const request = await fetch("././data/data.json");
-    const response = await request.json();
-    const randomIndex = Math.round(Math.random() * response.length);
-    const { hint, word } = response[randomIndex];
+    const randomIndex = Math.round(Math.random() * data.length - 1);
+    const { hint, word } = data[randomIndex];
     currentWord = word;
 
     [...word].forEach(
@@ -72,7 +72,7 @@ function endGame(status) {
 
 function handleKeyboard(e) {
   const element = e.target;
-  if ((element.tagName = "BUTTON")) {
+  if ((element.tagName === "BUTTON")) {
     let hasLetter = currentWord.toUpperCase().includes(element.innerText);
 
     if (hasLetter) {

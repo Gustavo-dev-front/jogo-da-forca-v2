@@ -12,7 +12,7 @@ let correctGuesses = 0;
 async function getData() {
   const HINT_OUTPUT = document.querySelector(".output .hint");
   try {
-    const request = await fetch("../data/data.json");
+    const request = await fetch("././data/data.json");
     const response = await request.json();
     const randomIndex = Math.round(Math.random() * response.length);
     const { hint, word } = response[randomIndex];
@@ -43,7 +43,7 @@ function resetGame() {
   UNDERSCORE_BOX.innerHTML = "";
   wrongGuesses = 0;
   correctGuesses = 0;
-  HANGMAN.src = `../images/hangman-${wrongGuesses}.svg`;
+  HANGMAN.src = `././images/hangman-${wrongGuesses}.svg`;
   OUTPUT_GUESSES.innerText = `${wrongGuesses} / ${MAX_ATTEMPTS}`;
   getData();
   createKeyboard();
@@ -57,11 +57,11 @@ function endGame(status) {
   const SPAN = P.querySelector("span");
 
   if (status === "victory") {
-    IMG.src = "../images/victory.gif";
+    IMG.src = "././images/victory.gif";
     H2.innerText = "Parabéns!";
     P.innerText = "Você acertou a palavra: ";
   } else {
-    IMG.src = "../images/lost.gif";
+    IMG.src = "././images/lost.gif";
     H2.innerText = "Game Over!";
     P.innerText = "A palavra correta é: ";
   }
@@ -87,7 +87,7 @@ function handleKeyboard(e) {
     } else {
       wrongGuesses++;
       OUTPUT_GUESSES.innerText = `${wrongGuesses} / ${MAX_ATTEMPTS}`;
-      HANGMAN.src = `../images/hangman-${wrongGuesses}.svg`;
+      HANGMAN.src = `././images/hangman-${wrongGuesses}.svg`;
     }
 
     element.disabled = true;
